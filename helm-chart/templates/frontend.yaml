@@ -19,11 +19,11 @@ metadata:
   name: {{ .Values.frontend.name }}
   namespace: {{ .Release.Namespace }}
 spec:
-#  strategy:
-#    type: RollingUpdate
-#    rollingUpdate:
-#      maxSurge: 100%
-#      maxUnavailable: 0%
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0%
   selector:
     matchLabels:
       app: {{ .Values.frontend.name }}
