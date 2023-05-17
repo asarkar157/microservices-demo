@@ -62,7 +62,7 @@ spec:
           lifecycle:
             preStop:
               exec:
-                command: ["sleep", "26"]
+                command: ["sleep", "15"]
           {{- end }}
           ports:
           - containerPort: 8080
