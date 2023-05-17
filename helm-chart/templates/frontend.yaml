@@ -19,6 +19,11 @@ metadata:
   name: {{ .Values.frontend.name }}
   namespace: {{ .Release.Namespace }}
 spec:
+#  strategy:
+#    type: RollingUpdate
+#    rollingUpdate:
+#      maxSurge: 100%
+#      maxUnavailable: 0%
   selector:
     matchLabels:
       app: {{ .Values.frontend.name }}
@@ -52,7 +57,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: {{ .Values.images.repository }}/{{ .Values.frontend.name }}:{{ .Values.images.tag | default .Chart.AppVersion }}
+          image: {{ .Values.images.repository }}/{{ .Values.frontend.name }}:{{ .Values.frontEndImages.tag | default .Chart.AppVersion }}
           ports:
           - containerPort: 8080
           readinessProbe:
